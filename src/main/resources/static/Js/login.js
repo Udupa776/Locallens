@@ -1,0 +1,30 @@
+let mail=document.getElementById("mail")
+let pass=document.getElementById("pass")
+let invalidotp=document.getElementById("invalidotp")
+
+mail.addEventListener("input",()=>
+{
+    invalidotp.style.display="none"
+})
+pass.addEventListener("input",()=>{
+    invalidotp.style.display="none"
+})
+
+async function Login(e)
+{
+    e.preventDefault()
+    console.log("clicked")
+    let res=await fetch("http://localhost:8080/checkpass",{
+        method:"POST",
+        headers:{"Content-Type":"application/json"},
+        body:JSON.stringify({"mail":mail.value,"pass":pass.value})
+    })
+    console.log(pass.value)
+    let data=await res.json()
+    console.log(data)
+
+    if(data===true )
+        window.location.href="test.html";
+    else
+        invalidotp.style.display=""
+}

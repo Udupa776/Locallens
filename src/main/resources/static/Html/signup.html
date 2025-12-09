@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LocalLens - Signup</title>
+    <link rel="stylesheet" href="\Css\logsign.css">
+</head>
+
+<body>
+    <div class="wrapper">
+        <div class="card">
+            <h2>Create Account</h2>
+            <p class="subtitle">Join LocalLens today</p>
+
+            <form onsubmit="signup(event)" id="submitfrm">
+                <div class="input-group">
+                    <label><b>Full Name</b></label>
+                    <input type="text" placeholder="Enter your full name" id="fullname" required>
+                </div>
+
+                <div class="input-group">
+                    <label><b>Email</b></label>
+                    <input type="email" placeholder="Enter your email" id="mail" required>
+                </div>
+
+                <div class="input-group">
+                    <label id="label"><b>Phone Number</b><span id="phcheck" style="color: red; display: none;" >* length must be 10</span> </label>
+                    <input type="text" placeholder="Enter phone number" id="phno" required>
+                </div>
+
+
+                <div class="input-group">
+                    <label><b>Password</b></label>
+                    <input type="password" placeholder="Create password" id="pass" required>
+                </div>
+                <div id="password-rules">
+                    <p class="rule"> <b>** Your password must contain:</b></p>
+                    <p class="rule"><span class="status" id="capital">◯</span> A-Z Capital letter</p>
+                    <p class="rule"><span class="status" id="small">◯</span> a-z Small letter</p>
+                    <p class="rule"><span class="status" id="nums">◯</span> 0-9 Number</p>
+                    <p class="rule"><span class="status" id="splc">◯</span>$-@ Speacial Chracter</p>
+                    <p class="rule"><span class="status" id="len">◯</span> lengh more than 8</p>
+                </div>
+                <div class="input-group">
+                    <label><b>Confirm Password</b></label>
+                    <input type="password" placeholder="Re-enter password" id="conpass" required>
+                    <p style="color: red;display: none;" id="para">*Both password must be same </p>
+                </div>
+
+                <button type="submit" class="btn" id="subbtn" style="background-color: #ddebe9ff;" disabled>Sign
+                    Up</button>
+
+                <p class="switch">Already have an account?
+                    <a href="login.html">Login</a>
+                </p>
+            </form>
+
+
+            <form id="veriform" style="display: none;" class="otp-card">
+                <p id="otppara" class="otp-text" style="color:red"></p>
+                <div class="input-group">
+                    <label><b>Enter OTP</b></label>
+                    <input type="number" placeholder="Enter OTP" id="otp" required>
+                </div>
+                <p id="invalidotp" class="otp-text" style="color:red;display: none;">!! Invalid OTP</p>
+                <button class="btn" id="verify" type="submit" onclick="Otpverification(event)">Verify</button>
+            </form>
+
+        </div>
+    </div>
+    <script src="\Js\signup.js"></script>
+</body>
+
+</html>

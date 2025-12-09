@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LocalLens - Login</title>
+<link rel="stylesheet" href="\Css\logsign.css">
+</head>
+
+<body>
+<div class="wrapper">
+    <div class="card">
+        <h2>Welcome Back</h2>
+        <p class="subtitle">Login to continue</p>
+
+        <form onsubmit="Login(event)">
+            <div class="input-group">
+                <label><b>Email</b></label>
+                <input type="text" placeholder="Enter your email" id="mail" required>
+            </div>
+
+            <div class="input-group">
+                <label><b>Password</b></label>
+                <input type="password" placeholder="Enter password" id="pass" required>
+            </div>
+            <p id="invalidotp" class="otp-text" style="color:red;display: none;" >!!  Invalid Credentials </p>
+            <div class="extra">
+                <a href="forgot.html" class="forgot">Forgot Password?</a>
+            </div>
+
+            <button type="submit" class="btn">Login</button>
+
+            <p class="switch">Don't have an account?
+                <a href="signup.html">Sign Up</a>
+            </p>
+        </form>
+    </div>
+</div>
+<script src="\Js\login.js"></script>
+</body>
+</html>

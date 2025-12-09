@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LocalLens - Community Issue Tracker</title>
+    <link rel="stylesheet" href="\Css\home.css">
+    <script src="\Js\home.js"></script>  
+    
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-content">
+            <div class="logo-section">
+                <div class="logo">L</div>
+                <h1 class="logo-text">LocalLens</h1>
+            </div>
+            <button class="report-btn" onclick="window.location.href='/Html/post.html'">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path>
+                    <circle cx="12" cy="13" r="4"></circle>
+                </svg>
+                <span>Report Issue</span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Category Filter -->
+    <div class="category-filter">
+        <div class="category-content">
+            <button class="category-btn active" onclick="filterCategory('all')" data-category="all">
+                🌐 All Issues
+            </button>
+            <button class="category-btn" onclick="filterCategory('pothole')" data-category="pothole">
+                🕳 Potholes
+            </button>
+            <button class="category-btn" onclick="filterCategory('garbage')" data-category="garbage">
+                🗑 Garbage
+            </button>
+            <button class="category-btn" onclick="filterCategory('water')" data-category="water">
+                💧 Water Leak
+            </button>
+            <button class="category-btn" onclick="filterCategory('stray')" data-category="stray">
+                🐕 Stray Animals
+            </button>
+            <button class="category-btn" onclick="filterCategory('other')" data-category="other">
+                ⚠ Other
+            </button>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="container">
+        <!-- Trending Section -->
+        <!-- <div class="trending">
+            <div class="trending-header">
+                📈 Trending in Your Area
+            </div>
+            <div class="trending-stats">23 new issues reported today • 12 resolved this week</div>
+        </div> -->
+
+        <!-- Issues Feed -->
+        <div id="issuesFeed"></div>
+
+        <!-- No Results -->
+        <div id="noResults" class="no-results" style="display: none;">
+            <div class="no-results-icon">🔍</div>
+            <div class="no-results-text">No issues found in this category</div>
+            <div class="no-results-subtext">Try selecting a different filter</div>
+        </div>
+    </div>
+
+    <!-- Report Issue Modal -->
+   
+</body>
+</html>
+
+

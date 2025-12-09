@@ -1,0 +1,199 @@
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+/* Background */
+body {
+    background: linear-gradient(135deg, #e4f0ff, #ffffff);
+    min-height: 100vh;         /* FIX: Allows scrolling if content is taller */
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;    /* FIX: Prevents cutting top area */
+    padding-top: 40px;          /* Adds space at top */
+}
+
+/* Wrapper */
+.wrapper {
+    width: 100%;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+#password-rules {
+ margin-bottom: 10px;
+  margin-top: 10px;
+}
+
+.rule {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 6px 1px;
+  font-size: 14px;
+}
+
+/* Card */
+.card {
+    width: 100%;
+    max-width: 400px;
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(10px);
+    padding: 30px 34px;
+    border-radius: 18px;
+    box-shadow: 0px 10px 30px rgba(0, 60, 130, 0.12);
+}
+
+/* Headings */
+.card h2 {
+    text-align: center;
+    color: #0b5ed7;
+    font-size: 26px;
+    font-weight: 700;
+}
+
+.subtitle {
+    text-align: center;
+    margin-bottom: 22px;
+    font-size: 14px;
+    color: #555;
+}
+
+/* Input fields */
+.input-group {
+    margin-bottom: 15px;
+}
+
+.input-group label {
+    font-size: 14px;
+    color: #333;
+    margin-bottom: 4px;
+    display: block;
+}
+
+.input-group input,
+.input-group select {
+    width: 100%;
+    padding: 11px;
+    border-radius: 10px;
+    border: 1px solid #c8d8ee;
+    background: #f8fbff;
+    font-size: 15px;
+    transition: border 0.2s, box-shadow 0.2s;
+}
+
+.input-group input:focus,
+.input-group select:focus {
+    border-color: #0b5ed7;
+    box-shadow: 0 0 6px rgba(11, 94, 215, 0.25);
+    outline: none;
+}
+
+/* Button */
+.btn {
+    width: 100%;
+    padding: 12px;
+    background: #0b5ed7;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 17px;
+    cursor: pointer;
+    margin-top: 5px;
+    transition: background 0.2s;
+}
+
+.btn:hover {
+    background: #0949aa;
+}
+
+/* Forgot */
+.extra {
+    text-align: right;
+    margin: 2px 0 10px;
+}
+
+.forgot {
+    font-size: 13px;
+    color: #0b5ed7;
+}
+
+/* Switch */
+.switch {
+    text-align: center;
+    margin-top: 15px;
+    font-size: 14px;
+}
+
+.switch a {
+    color: #0b5ed7;
+    font-weight: 600;
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+    .card {
+        padding: 24px 26px;
+    }
+}
+
+/* OTP Card */
+.otp-card {
+    width: 100%;
+    max-width: 380px;
+    background: rgba(255, 255, 255, 0.88);
+    backdrop-filter: blur(10px);
+    padding: 25px 30px;
+    border-radius: 16px;
+    box-shadow: 0px 8px 25px rgba(0, 60, 130, 0.15);
+    margin-top: 20px;
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+/* OTP message text */
+.otp-text {
+    font-size: 15px;
+    color: #444;
+    margin-bottom: 18px;
+    text-align: center;
+}
+
+/* Reuse the same input-group styling */
+.otp-card .input-group input {
+    padding: 11px;
+    border-radius: 10px;
+    border: 1px solid #c8d8ee;
+    background: #f8fbff;
+    font-size: 15px;
+    width: 100%;
+}
+
+.otp-card .input-group input:focus {
+    border-color: #0b5ed7;
+    box-shadow: 0 0 5px rgba(11, 94, 215, 0.25);
+    outline: none;
+}
+
+
+#label
+{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+/* Fade animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(8px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

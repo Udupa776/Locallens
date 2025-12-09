@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forgot Password</title>
+    <link rel="stylesheet" href="\Css\forgot.css">
+</head>
+<body>
+
+<div class="container">
+    <h2>Forgot Password</h2>
+
+    <form onsubmit="forgotpass(event)" id="otpform">
+         <p class="subtitle">Enter your registered email to receive OTP</p>
+         <label style="display: flex;justify-content:left;"><b>Email</b></label>
+        <input type="mail" placeholder="Enter Email" class="input" id="mail" required>
+        <label style="display: flex;justify-content:left;"><b>Password</b></label>
+        <input type="password" placeholder="Enter new password" id="pass" class="input" required>
+        <label style="display: flex;justify-content:left;"><b>Confirm Password</b></label>
+        <input type="password" placeholder="Re-Enter password" id="conpass" class="input" required>
+        <p id="wrongpass" class="otp-text" style="color:red;display: none;" >Please Enter Same Password </p>
+        <button class="btn" type="submit">Send OTP</button>
+        
+    <p class="back">
+        <a href="login.html">Back to Login</a>
+    </p>
+    </form>
+
+         <form id="veriform" style="display: none;" class="otp-card">
+    <p id="otppara" class="otp-text" style="color:red"></p>
+    <div class="input-group">
+        <label><b>Enter OTP</b></label>
+        <input type="number" placeholder="Enter OTP" id="otp" required>
+    </div>
+<p id="invalidotp" class="otp-text" style="color:red;display: none;" >!!  Invalid OTP</p><br>
+    <button class="btn" id="verify" type="submit" onclick="Otpverification(event)">Verify</button>
+</form>
+</div>
+<script src="\Js\forgot.js"></script>
+</body>
+</html>

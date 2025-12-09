@@ -1,0 +1,112 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: "Poppins", sans-serif;
+    box-sizing: border-box;
+}
+
+body {
+    background: #eef2f3;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.container {
+    background: #fff;
+    width: 350px;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    text-align: center;
+}
+
+h2 {
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.subtitle {
+    font-size: 14px;
+    margin-bottom: 20px;
+    color: #555;
+}
+
+.input {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    outline: none;
+    transition: 0.3s;
+}
+
+.input:focus {
+    border-color: #4b7bec;
+    box-shadow: 0 0 5px rgba(75,123,236,0.4);
+}
+
+.btn {
+    width: 100%;
+    padding: 12px;
+    background: #4b7bec;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn:hover {
+    background: #3867d6;
+}
+
+.back {
+    margin-top: 15px;
+}
+
+.back a {
+    text-decoration: none;
+    color: #4b7bec;
+    font-weight: 600;
+}
+
+* OTP Card */
+.otp-card {
+    width: 100%;
+    max-width: 380px;
+    background: rgba(255, 255, 255, 0.88);
+    backdrop-filter: blur(10px);
+    padding: 25px 30px;
+    border-radius: 16px;
+    box-shadow: 0px 8px 25px rgba(0, 60, 130, 0.15);
+    margin-top: 20px;
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+/* OTP message text */
+.otp-text {
+    font-size: 15px;
+    color: #444;
+    margin-bottom: 18px;
+    text-align: center;
+}
+
+/* Reuse the same input-group styling */
+.otp-card .input-group input {
+    padding: 11px;
+    border-radius: 10px;
+    border: 1px solid #c8d8ee;
+    background: #f8fbff;
+    font-size: 15px;
+    width: 100%;
+}
+
+.otp-card .input-group input:focus {
+    border-color: #0b5ed7;
+    box-shadow: 0 0 5px rgba(11, 94, 215, 0.25);
+    outline: none;
+}

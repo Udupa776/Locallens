@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Report Issue | LocalLens</title>
+    <link rel="stylesheet" href="\Css\post.css">
+</head>
+
+<body>
+
+    <div class="page-header">
+        <h1>Report a Issue</h1>
+    </div>
+ <form id="post" onsubmit="Post(event)" enctype="multipart/form-data">
+    <div class="post-container">
+
+        <div class="post-card">
+   
+            <div class="upload-area" id="uploadArea">
+                <input type="file" id="imageInput"  name="img">
+                <p class="upload-text" id="upload-text">Click or Drag & Drop to Upload Image</p>
+                <img id="previewImage" class="preview">
+            </div>
+
+  
+            <label class="label">Caption</label>
+            <textarea class="input caption" placeholder="Write something meaningful..." name="area" id="caption"></textarea>
+
+     
+            <label class="label">Tags</label>
+            <input type="text" class="input" placeholder="#pothole  #cleanup  #localhelp" name="tag" id="tag">
+             <label calss="label"><b>Catagory</b></label>
+             <select name="catg" id="catg" class="input" placeholder="Select catagory">
+                <option disabled >Select catagory</option>
+                <option value="Pothole">Pothole</option>
+                <option value="Garbage">Garbage</option>
+                <option value="waterleak">Water Leak</option>
+                <option value="other">Other</option>
+             </select>
+         
+            <label class="label">Location</label>
+            <input type="text" class="input" placeholder="Enter location" name="loc" id="loc">
+
+            <button class="btn" id="postbtn" >Post Now</button>
+
+        </div>
+    </div>
+</form>
+<script src="\Js\post.js">
+</script>
+
+</body>
+</html>
