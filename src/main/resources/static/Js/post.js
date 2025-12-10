@@ -23,7 +23,7 @@ async function Post(e) {
      postbtn.innerText="Posting....."
     e.preventDefault()
     const frm = new FormData(post)
-    let res = await fetch("http://localhost:8080/posts", {
+    let res = await fetch("https://locallens-1.onrender.com/posts", {
         method: "POST",
         body: frm
     })
@@ -34,7 +34,7 @@ async function Post(e) {
     console.log(d)
     let key = d["Key"]
     if (key) {
-        let res = await fetch("http://localhost:8080/issue", {
+        let res = await fetch("https://locallens-1.onrender.com/issue", {
             method: "post",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ "caption": caption.value, "tags": tag.value, "location": loc.value, "image": key ,"catagory":catg.value})
