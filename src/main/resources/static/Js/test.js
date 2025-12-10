@@ -3,7 +3,7 @@ const ne=document.createElement("div")
 let di=document.getElementById("di")
 window.addEventListener("load",async ()=>
 {
-  let res=await fetch("http://localhost:8080/feed")
+  let res=await fetch("https://locallens-1.onrender.com/feed")
     let data=await res.json()
     console.log(data)
 
