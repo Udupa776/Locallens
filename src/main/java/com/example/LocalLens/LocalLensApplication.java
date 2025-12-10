@@ -42,6 +42,17 @@ public class LocalLensApplication {
     System.out.println("DB USER = " + System.getenv("UNAME"));
     System.out.println("DB PASS EXISTS = " + (System.getenv("SUPABASE_PASS") != null));
 	}
+	@Bean
+public CommandLineRunner runner() {
+    return args -> {
+        System.out.println("===== ENV CHECK =====");
+        System.out.println("DB URL = " + System.getenv("URL"));
+        System.out.println("DB USER = " + System.getenv("UNAME"));
+        System.out.println("DB PASS EXISTS = " + (System.getenv("SUPABASE_PASS") != null));
+        System.out.println("======================");
+    };
+}
+
 
 	@PostMapping("/signup")
 	public Signup signUp(@RequestBody Signup sign) {
