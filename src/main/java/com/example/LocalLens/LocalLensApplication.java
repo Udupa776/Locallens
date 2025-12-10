@@ -38,6 +38,9 @@ public class LocalLensApplication {
 
 		SpringApplication.run(LocalLensApplication.class, args);
 		System.out.println("Application is ready in port 8080");
+		System.out.println("DB URL = " + System.getenv("URL"));
+    System.out.println("DB USER = " + System.getenv("UNAME"));
+    System.out.println("DB PASS EXISTS = " + (System.getenv("SUPABASE_PASS") != null));
 	}
 
 	@PostMapping("/signup")
