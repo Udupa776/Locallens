@@ -3,19 +3,7 @@ package com.example.LocalLens;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-<<<<<<< HEAD
-=======
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.multipart.MultipartFile;
-import org.springframework.boot.CommandLineRunner;
-import org.springframework.context.annotation.Bean;
->>>>>>> 376bfae192b940b792caff92e23b80199d0c30ab
+
 
 
 
@@ -42,24 +30,10 @@ public class LocalLensApplication {
 
 		SpringApplication.run(LocalLensApplication.class, args);
 		System.out.println("Application is ready in port 8080");
-<<<<<<< HEAD
+
 		
-=======
-		System.out.println("DB URL = " + System.getenv("URL"));
-    System.out.println("DB USER = " + System.getenv("UNAME"));
-    System.out.println("DB PASS EXISTS = " + (System.getenv("SUPABASE_PASS") != null));
->>>>>>> 376bfae192b940b792caff92e23b80199d0c30ab
 	}
-	@Bean
-public CommandLineRunner runner() {
-    return args -> {
-        System.out.println("===== ENV CHECK =====");
-        System.out.println("DB URL = " + System.getenv("URL"));
-        System.out.println("DB USER = " + System.getenv("UNAME"));
-        System.out.println("DB PASS EXISTS = " + (System.getenv("SUPABASE_PASS") != null));
-        System.out.println("======================");
-    };
-}
+
 
 
 
