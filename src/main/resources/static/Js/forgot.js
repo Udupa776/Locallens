@@ -6,7 +6,8 @@ let pass=document.getElementById("pass")
 let conpass=document.getElementById("conpass")
 let wrongpass=document.getElementById("wrongpass")
 
-
+// production request fetch 
+//https://locallens-1.onrender.com
 
 async function forgotpass(e)
 {
@@ -16,7 +17,7 @@ async function forgotpass(e)
     veriform.style.display=""
     otpform.style.display="none"
     otppara.innerHTML=`OTP is sent to ${mail.value}`;
-    let res=await fetch("https://locallens-1.onrender.com/sendotp",{
+    let res=await fetch("http://localhost:8080/sendotp",{
         method:"POST",
         headers:{"Content-Type":"application/json"},
         body:JSON.stringify({"mail":mail.value})
@@ -34,14 +35,14 @@ async function Otpverification(e)
 {
     e.preventDefault()
     verify.style.background = "#ddebe9ff"
-    let res = await fetch("https://locallens-1.onrender.com/verify", {
+    let res = await fetch("http://localhost:8080/verify", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ "mail": mail.value, "otp": otp.value })
     })
     let data = await res.json();
     if (data == true) {
-        let res=await fetch("https://locallens-1.onrender.com/updatepass",{
+        let res=await fetch("http://localhost:8080/updatepass",{
             method:"POST",
             headers:{"Content-Type":"application/json"},
             body:JSON.stringify({"mail":mail.value,"pass":pass.value})
