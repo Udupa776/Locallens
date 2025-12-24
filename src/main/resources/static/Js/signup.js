@@ -114,7 +114,7 @@ async function signup(e) {
         submitfrm.style.display = "none"
         verify.style.display = ""
         otppara.innerHTML = `Otp is sent to ${mail.value}`
-        let res = await fetch("http://localhost/sendotp", {
+        let res = await fetch("https://locallens-1.onrender.com/sendotp", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ "mail": mail.value })
