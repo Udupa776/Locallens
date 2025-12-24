@@ -13,10 +13,10 @@ window.addEventListener("load",async ()=>{
    let umail=await getcookie();
    console.log(umail)
    if(umail){
-   let res1=await fetch(`http://localhost:8080/getcount/${umail}`)
+   let res1=await fetch(`https://locallens-1.onrender.com/getcount/${umail}`)
    let postcount=await res1.json()
    console.log(postcount)
-   let res2=await fetch(`http://localhost:8080/profile/${umail}`)
+   let res2=await fetch(`https://locallens-1.onrender.com/profile/${umail}`)
    let prof=await res2.json()
    console.log(prof)
    phno.innerHTML=prof.phone;
