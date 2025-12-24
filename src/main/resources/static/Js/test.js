@@ -4,11 +4,11 @@ let di = document.getElementById("di")
 window.addEventListener("load", async () => {
     let uname = await cookieStore.get("mail")
     if (uname) {
-        let res = await fetch("http://localhost:8080/feed/All")
+        let res = await fetch("https://locallens-1.onrender.com/feed/All")
         let data = await res.json()
         console.log(data)
         let d = {}
-        let commentss = await fetch("http://localhost:8080/comments")
+        let commentss = await fetch("https://locallens-1.onrender.com/comments")
         let comentdata = await commentss.json()
         console.log(comentdata)
         for (let i = 0; i < comentdata.length; i++) {
@@ -113,7 +113,7 @@ async function getfollowers()
 {
     let umail=await cookieStore.get("mail")
     let followmail=umail.value
-    let res=await fetch(`http://localhost:8080/getfollowers/${followmail}`)
+    let res=await fetch(`https://locallens-1.onrender.com/getfollowers/${followmail}`)
     let data=await res.json()
     
         for(let i=0;i<data.length;i++)
@@ -130,7 +130,7 @@ async function getfollowers()
 }
 
 async function DeleteComment(comment) {
-    let res = await fetch(`http://localhost:8080/deletecomment?comment=${encodeURIComponent(comment)}`, {
+    let res = await fetch(`https://locallens-1.onrender.com/deletecomment?comment=${encodeURIComponent(comment)}`, {
         method: "DELETE"
     })
     window.location.reload()
@@ -150,7 +150,7 @@ async function follow(m)
         c[i].disabled=true
     }
     }
-    let res1=await fetch("http://localhost:8080/follow",{
+    let res1=await fetch("https://locallens-1.onrender.com/follow",{
         method:"POST",
         headers:{"Content-Type":"application/json"},
         body:JSON.stringify({"followingMail":m,"followMail":umail})
@@ -166,7 +166,7 @@ async function Postcommet(id) {
     let commentsec = document.getElementById(`commentsec-${id}`);
     let nme = "@" + uname.value.split("@")[0]
     if (commentsec.value) {
-        let res = await fetch("http://localhost:8080/storecomment", {
+        let res = await fetch("https://locallens-1.onrender.com/storecomment", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ "name": nme, "comment": commentsec.value, "postId": id })
@@ -191,12 +191,12 @@ function toggleComments(id) {
 
 async function render(cat) {
     console.log(cat)
-    let res = await fetch(`http://localhost:8080/feed/${cat}`)
+    let res = await fetch(`https://locallens-1.onrender.com/feed/${cat}`)
     let data = await res.json()
     console.log(data)
     let d = {}
     if (data) {
-        let commentss = await fetch("http://localhost:8080/comments")
+        let commentss = await fetch("https://locallens-1.onrender.com/comments")
         let comentdata = await commentss.json()
         console.log(comentdata)
         for (let i = 0; i < comentdata.length; i++) {
