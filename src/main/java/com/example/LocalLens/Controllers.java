@@ -52,15 +52,18 @@ public class Controllers {
    
 	private final Commentsrepo comm;
 
+	private final Followrepo follow;
+
 	private StoreImg store;
 
-	public Controllers(Signuprepo signup, Otprepo o, Sendmail mail,StoreImg img,Postrepo p,Commentsrepo comm) {
+	public Controllers(Signuprepo signup, Otprepo o, Sendmail mail,StoreImg img,Postrepo p,Commentsrepo comm,Followrepo f) {
 		this.signup = signup;
 		this.otp = o;
 		this.mail = mail;
 		this.store=img;
 		this.post=p;
 		this.comm=comm;
+		this.follow=f;
 	}
 
 	// public static void main(String[] args) {
@@ -99,6 +102,12 @@ public class Controllers {
 		else
 			return false;
 	}
+   @GetMapping("/profile/{mail}")
+   public ResponseEntity<Signup> Profile(@PathVariable String mail)
+   {
+	 return ResponseEntity.ok(signup.findByMail(mail));
+   }
+
 
 	@PostMapping("/checkpass")
 	public boolean CheckPass(@RequestBody Signup si)
@@ -161,6 +170,22 @@ public class Controllers {
 			return ResponseEntity.noContent().build();
 
 	}
+
+	@PostMapping("/follow")
+	public ResponseEntity Follow(@RequestBody Follow fo)
+	{
+		
+		return ResponseEntity.ok(follow.save(fo));
+	} 
 	
-	
+	@GetMapping("/getfollowers/{fmail}")
+		public ResponseEntity<List<Follow>> GetFollowers(@PathVariable String fmail)
+		{
+				return ResponseEntity.ok(follow.findAllByFollowMail(fmail));
+		}
+	@GetMapping("/getcount/{mail}")
+	public long getCount(@PathVariable String mail)
+	{
+		return post.countByMail(mail);
+	}
 }

@@ -22,8 +22,8 @@ public class Post {
 
     @Column
     private String tags;
-    
-
+    @Column 
+    private String mail;
     @Column
     private String location;
     @Column 
@@ -31,6 +31,10 @@ public class Post {
   public void setImage(String img)
   {
     this.image=img;
+  }
+  public void setMail(String img)
+  {
+    this.mail=img;
   }
     public void setLocation(String l)
     {
@@ -78,5 +82,9 @@ public class Post {
   public long getPostId()
   {
     return post_id;
+  }
+  public String getMail()
+  {
+    return mail;
   }
 }

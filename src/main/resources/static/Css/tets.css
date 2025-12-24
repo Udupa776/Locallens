@@ -144,6 +144,37 @@ body {
   cursor: pointer;
 }
 
+#post-name
+{
+    font-weight: bolder;
+    color:#2a2d34;
+}
+.post-name:hover
+{
+    cursor: pointer;
+}
+
+.follow-btn {
+  margin-left: auto;
+  padding: 6px 14px;
+  font-size: 13px;
+  border-radius: 6px;
+  border: 1px solid #2f6bff;
+  background: #2f6bff;
+  color: #fff;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.follow-btn.following {
+  background: #ffffff;
+  color: #2f6bff;
+}
+
+.follow-btn:hover{
+  scale:1.1;
+}
+
 .post-card {
   background: #fff;
   border-radius: 12px;

@@ -17,11 +17,13 @@ fileInput.addEventListener("change", (e) => {
 });
 
 async function Post(e) {
+      e.preventDefault()
+    let mail=await cookieStore.get("mail")
     let post = document.getElementById("post")
      postbtn.disabled=true;
      postbtn.style.background="#E2E0E0"
      postbtn.innerText="Posting....."
-    e.preventDefault()
+  
     const frm = new FormData(post)
     let res = await fetch("http://localhost:8080/posts", {
         method: "POST",
@@ -37,12 +39,13 @@ async function Post(e) {
         let res = await fetch("http://localhost:8080/issue", {
             method: "post",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ "caption": caption.value, "tags": tag.value, "location": loc.value, "image": key ,"catagory":catg.value})
+            body: JSON.stringify({ "caption": caption.value, "tags": tag.value, "location": loc.value, "image": key ,"catagory":catg.value,"mail":mail.value})
         })
         console.log(res)
         let data = await res.json()
         console.log(data)
        window.location.href='/Html/test.html';
     }
+
 
 }
