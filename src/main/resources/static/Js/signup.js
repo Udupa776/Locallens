@@ -133,7 +133,7 @@ async function signup(e) {
 async function Otpverification(e) {
     e.preventDefault()
     verify.style.background = "#ddebe9ff"
-    let res = await fetch("http://localhost/verify", {
+    let res = await fetch("https://locallens-1.onrender.com/verify", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ "mail": mail.value, "otp": otp.value })
