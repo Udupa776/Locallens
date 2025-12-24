@@ -114,7 +114,7 @@ async function signup(e) {
         submitfrm.style.display = "none"
         verify.style.display = ""
         otppara.innerHTML = `Otp is sent to ${mail.value}`
-        let res = await fetch("https://locallens-1.onrender.com/sendotp", {
+        let res = await fetch("http://localhost/sendotp", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ "mail": mail.value })
@@ -133,7 +133,7 @@ async function signup(e) {
 async function Otpverification(e) {
     e.preventDefault()
     verify.style.background = "#ddebe9ff"
-    let res = await fetch("https://locallens-1.onrender.com/verify", {
+    let res = await fetch("http://localhost/verify", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ "mail": mail.value, "otp": otp.value })
@@ -141,11 +141,12 @@ async function Otpverification(e) {
     let data = await res.json();
     if (data == true) {
         try {
-            let res = await fetch("https://locallens-1.onrender.com/signup", {
+            let res = await fetch("http://localhost:8080/signup", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ "mail": mail.value, "name": fullname.value, "phone": phno.value, "pass": pass.value })
             })
+            cookieStore.set({name:"mail",value:fullname.value,expires:Date.now()+30*60*1000,path:"/"})
             window.location.href = "test.html"
         }
         catch (error) {

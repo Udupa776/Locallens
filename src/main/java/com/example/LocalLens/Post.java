@@ -4,7 +4,7 @@ import java.time.LocalDateTime;
 
 import jakarta.persistence.*;
 
-
+import java.util.*;
 @Entity
 @Table(name="post")
 public class Post {
@@ -22,7 +22,8 @@ public class Post {
 
     @Column
     private String tags;
-
+    @Column 
+    private String mail;
     @Column
     private String location;
     @Column 
@@ -30,6 +31,10 @@ public class Post {
   public void setImage(String img)
   {
     this.image=img;
+  }
+  public void setMail(String img)
+  {
+    this.mail=img;
   }
     public void setLocation(String l)
     {
@@ -74,5 +79,12 @@ public class Post {
     {
         return image;
     }
-
+  public long getPostId()
+  {
+    return post_id;
+  }
+  public String getMail()
+  {
+    return mail;
+  }
 }

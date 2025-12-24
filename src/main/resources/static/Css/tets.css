@@ -1,4 +1,4 @@
-/* Global Page */
+/* ---------------- GLOBAL ---------------- */
 body {
     margin: 0;
     padding: 0;
@@ -6,7 +6,7 @@ body {
     font-family: "Inter", sans-serif;
 }
 
-/* Header */
+/* ---------------- HEADER ---------------- */
 .header {
     background: #ffffff;
     border-bottom: 1px solid #d7e3ff;
@@ -64,7 +64,7 @@ body {
     background: #1958ff;
 }
 
-/* Category Section */
+/* ---------------- CATEGORY FILTER ---------------- */
 .category-filter {
     background: #ffffff;
     padding: 10px 0;
@@ -96,86 +96,283 @@ body {
     color: white;
 }
 
-/* FEED POST (Instagram Style) */
+/* ---------------- POST CARD ---------------- */
 .ig-post {
-    width: 480px;
-    margin: 20px auto;
+    width: 100%;
+    max-width: 520px;  /* Instagram feed width */
+    margin: 25px auto;
     background: white;
-    border-radius: 12px;
+    border-radius: 14px;
     border: 1px solid #dce7ff;
     overflow: hidden;
-    box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+    box-shadow: 0 6px 16px rgba(0,0,0,0.06);
+    transition: 0.25s ease;
 }
 
-/* IMAGE */
+
+.ig-post:hover {
+    box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+}
+
+/* ---------------- IMAGE ---------------- */
 .ig-image {
     width: 100%;
-    height: 350px;   /* fixed height like Instagram */
+    aspect-ratio: 1 / 1;  /* Instagram style */
+    max-height: 50vh;
     overflow: hidden;
-    border-bottom: 1px solid #dce7ff;
 }
 
 .ig-image img {
     width: 100%;
     height: 100%;
-    object-fit: cover;  /* keeps image inside div */
-    object-position: center;
-    border-radius: 0;
+    object-fit: cover;
 }
 
-
-/* ACTIONS */
-.ig-actions {
-    padding: 12px 16px;
-    font-size: 22px;
+@media (max-width: 767px) {
+    .ig-image {
+        max-height: 80vh;  /* more image visibility on mobile */
+    }
+}
+.comment-item
+{
     display: flex;
-    gap: 14px;
+    justify-content: space-between;
+}
+
+.delcom:hover
+{
+  cursor: pointer;
+}
+
+#post-name
+{
+    font-weight: bolder;
+    color:#2a2d34;
+}
+.post-name:hover
+{
+    cursor: pointer;
+}
+
+.follow-btn {
+  margin-left: auto;
+  padding: 6px 14px;
+  font-size: 13px;
+  border-radius: 6px;
+  border: 1px solid #2f6bff;
+  background: #2f6bff;
+  color: #fff;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.follow-btn.following {
+  background: #ffffff;
+  color: #2f6bff;
+}
+
+.follow-btn:hover{
+  scale:1.1;
+}
+
+.post-card {
+  background: #fff;
+  border-radius: 12px;
+  margin: 16px auto;
+  max-width: 520px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  overflow: hidden;
+}
+
+/* Header */
+.post-header {
+  display: flex;
+  align-items: center;
+  padding: 12px 14px;
+}
+
+.post-avatar {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.post-user-info {
+  margin-left: 10px;
+  flex-grow: 1;
+}
+
+.post-username {
+  display: block;
+  font-weight: 600;
+  font-size: 15px;
+  color: #111;
+}
+
+.post-time {
+  font-size: 12px;
+  color: #777;
+}
+
+.post-menu {
+  background: none;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+/* Image */
+.post-image {
+  width: 100%;
+  display: block;
+}
+
+/* Actions */
+.post-actions {
+  padding: 10px 14px;
+  font-size: 14px;
+  border-top: 1px solid #eee;
+}
+
+/* Content */
+.post-content {
+  padding: 10px 14px 14px;
+}
+
+.tags span {
+  color: #1877f2;
+  font-size: 13px;
+  margin-right: 8px;
+}
+
+/* ---------------- ACTION BAR ---------------- */
+.post-actions {
+    padding: 14px 16px;
+    font-size: 18px;
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    border-bottom: 1px solid #e7eeff;
     color: #2a2d34;
 }
 
-.ig-actions .save {
-    margin-left: auto;
+.post-actions span {
+    cursor: pointer;
+    padding: 6px 10px;
+    border-radius: 8px;
+    transition: 0.2s ease;
+    display: flex;
+    align-items: center;
+    gap: 4px;
 }
 
-/* LOCATION */
+.post-actions span:hover {
+    background: #eef4ff;
+}
+
+/* ---------------- LOCATION ---------------- */
 .ig-location {
-    padding: 0 16px;
-    margin-top: -4px;
+    padding: 10px 16px 0;
     font-size: 15px;
     color: #2f6bff;
     font-weight: 600;
 }
 
-/* TAGS */
+/* ---------------- CAPTION ---------------- */
+.ig-caption {
+    padding: 10px 16px;
+    font-size: 15px;
+    color: #333;
+    line-height: 1.5;
+}
+
+/* ---------------- TAGS ---------------- */
 .ig-tags {
-    padding: 8px 16px 16px;
+    padding: 5px 16px 12px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
 }
 
 .ig-tags span {
+    background: #eef4ff;
+    padding: 4px 10px;
+    border-radius: 10px;
+    font-size: 13px;
     color: #2f6bff;
-    margin-right: 10px;
-    font-size: 14px;
     font-weight: 500;
 }
 
-/* Hover Effect */
-.ig-post:hover {
-    box-shadow: 0 6px 24px rgba(0,0,0,0.10);
-    transition: 0.2s ease-in-out;
-}
-/* Caption */
-.ig-caption {
-    padding: 10px 15px;
-    font-size: 15px;
-    color: #333;
-    line-height: 1.4;
-    background: #ffffff;
+/* ---------------- POSTED TIME ---------------- */
+.ig-posted-time {
+    padding: 8px 16px 14px;
+    font-size: 12px;
+    color: #6b82c9;
 }
 
-/* Posted Time */
-.ig-posted-time {
-    padding: 8px 15px 15px 15px;
-    font-size: 13px;
-    color: #5a78c9;
-    background: #ffffff;
+/* ---------------- COMMENT SECTION ---------------- */
+.comment-section {
+    display: none;
+    padding: 14px 16px;
+    background: #f4f6ff;
+    border-top: 1px solid #dce7ff;
+    animation: fadeIn 0.25s ease-out;
+}
+
+.comment-item {
+    margin-bottom: 10px;
+    font-size: 14px;
+    color: #333;
+}
+
+.comment-item strong {
+    color: #2f6bff;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-4px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+.comment-input-box{
+  display:flex;
+  gap:8px;
+}
+
+.app-layout {
+  display: flex;
+  justify-content: center;
+}
+
+
+
+.feed-wrapper {
+  width: 100%;
+  max-width: 520px;
+}
+
+.comment-input{
+  flex:1;
+  padding:10px 12px;
+  border:1px solid #ddd;
+  border-radius:20px;
+  font-size:14px;
+  outline:none;
+}
+
+.comment-input:focus{
+  border-color:#007bff;
+}
+.comment-btn{
+  padding:8px 16px;
+  border:none;
+  background:#007bff;
+  color:#fff;
+  border-radius:20px;
+  cursor:pointer;
+  font-size:14px;
+}
+
+.comment-btn:hover{
+  background:#0056cc;
 }

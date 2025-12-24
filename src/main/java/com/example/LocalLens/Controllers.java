@@ -8,6 +8,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -49,22 +50,28 @@ public class Controllers {
 
 	private final Postrepo post;
    
+	private final Commentsrepo comm;
+
+	private final Followrepo follow;
+
 	private StoreImg store;
 
-	public Controllers(Signuprepo signup, Otprepo o, Sendmail mail,StoreImg img,Postrepo p) {
+	public Controllers(Signuprepo signup, Otprepo o, Sendmail mail,StoreImg img,Postrepo p,Commentsrepo comm,Followrepo f) {
 		this.signup = signup;
 		this.otp = o;
 		this.mail = mail;
 		this.store=img;
 		this.post=p;
+		this.comm=comm;
+		this.follow=f;
 	}
 
-	public static void main(String[] args) {
+	// public static void main(String[] args) {
 
-		SpringApplication.run(LocalLensApplication.class, args);
-		System.out.println("Application is ready in port 8080");
+	// 	SpringApplication.run(LocalLensApplication.class, args);
+	// 	System.out.println("Application is ready in port 8080");
 		
-	}
+	// }
 
 
 	@PostMapping("/signup")
@@ -95,6 +102,12 @@ public class Controllers {
 		else
 			return false;
 	}
+   @GetMapping("/profile/{mail}")
+   public ResponseEntity<Signup> Profile(@PathVariable String mail)
+   {
+	 return ResponseEntity.ok(signup.findByMail(mail));
+   }
+
 
 	@PostMapping("/checkpass")
 	public boolean CheckPass(@RequestBody Signup si)
@@ -130,11 +143,49 @@ public class Controllers {
 		return ResponseEntity.ok(post.save(p));
 	}
 
-	@GetMapping("/feed")
-	public ResponseEntity<List<Post>> Feed()
+	@GetMapping("/feed/{catagory}")
+	public ResponseEntity<List<Post>> Feed(@PathVariable String catagory)
 	{
+		if(catagory.equals("All"))
 		return ResponseEntity.ok(post.findAll());
+		else
+			return ResponseEntity.ok(post.findAllByCatagory(catagory));
 
 	}	
+	@GetMapping("/comments")
+	public ResponseEntity<List<Comments>> Comment(){
+        return ResponseEntity.ok(comm.findAll());
+	}
+
+	@PostMapping("/storecomment")
+	public Comments StoreComm(@RequestBody Comments c)
+	{
+        return comm.save(c);
+	}
+	@DeleteMapping("/deletecomment")
+	public ResponseEntity<Void> DeleteComm(@RequestParam String comment)
+	{
+         comm.deleteByComment(comment);
+		 
+			return ResponseEntity.noContent().build();
+
+	}
+
+	@PostMapping("/follow")
+	public ResponseEntity Follow(@RequestBody Follow fo)
+	{
+		
+		return ResponseEntity.ok(follow.save(fo));
+	} 
 	
+	@GetMapping("/getfollowers/{fmail}")
+		public ResponseEntity<List<Follow>> GetFollowers(@PathVariable String fmail)
+		{
+				return ResponseEntity.ok(follow.findAllByFollowMail(fmail));
+		}
+	@GetMapping("/getcount/{mail}")
+	public long getCount(@PathVariable String mail)
+	{
+		return post.countByMail(mail);
+	}
 }

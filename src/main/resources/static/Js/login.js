@@ -14,7 +14,7 @@ async function Login(e)
 {
     e.preventDefault()
     console.log("clicked")
-    let res=await fetch("https://locallens-1.onrender.com/checkpass",{
+    let res=await fetch("http://localhost:8080/checkpass",{
         method:"POST",
         headers:{"Content-Type":"application/json"},
         body:JSON.stringify({"mail":mail.value,"pass":pass.value})
@@ -22,9 +22,12 @@ async function Login(e)
     console.log(pass.value)
     let data=await res.json()
     console.log(data)
-
-    if(data===true )
+    
+    if(data===true ){
+        cookieStore.set({name:"mail",value:mail.value,expires:Date.now()+30*60*1000,path:"/"})
         window.location.href="test.html";
+
+    }
     else
         invalidotp.style.display=""
 }
