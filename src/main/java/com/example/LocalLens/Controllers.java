@@ -25,23 +25,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 @RestController
 public class Controllers {
     
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-   
 	private final Signuprepo signup;
 
 	private final Otprepo otp;
@@ -65,14 +48,6 @@ public class Controllers {
 		this.comm=comm;
 		this.follow=f;
 	}
-
-	// public static void main(String[] args) {
-
-	// 	SpringApplication.run(LocalLensApplication.class, args);
-	// 	System.out.println("Application is ready in port 8080");
-		
-	// }
-
 
 	@PostMapping("/signup")
 	public Signup signUp(@RequestBody Signup sign) {
@@ -187,5 +162,14 @@ public class Controllers {
 	public long getCount(@PathVariable String mail)
 	{
 		return post.countByMail(mail);
+	}
+	 @PostMapping("/unfollow")
+	public ResponseEntity<Void> unfollow(@RequestBody Follow f)
+	{
+		String param1=f.getFollowMail();
+		String param2=f.getFollowingMail();
+		
+		follow.Unfollow(param1,param2);
+		return ResponseEntity.ok().build();
 	}
 }
