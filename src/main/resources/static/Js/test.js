@@ -154,17 +154,17 @@ async function DeleteComment(comment) {
 async function follow(m)
 {  
     
-    let umail=getcookie();
+    let umail=getcookie()
     console.log(m)
     console.log(umail)
-    if(umail){
-    if(umail!=m){
+    
     let c=document.getElementsByClassName(m)
+    
+          if(c[0].innerText==="Follow"){
     for(let i=0;i<c.length;i++){
         c[i].innerHTML="Following"
         c[i].style.background="gray";
-        c[i].disabled=true
-    }
+       
     }
     let res1=await fetch("https://locallens-1.onrender.com/follow",{
         method:"POST",
@@ -173,6 +173,23 @@ async function follow(m)
     })
     let data1=await res1.json();
     console.log(data1)
+}
+else
+{
+    console.log("unfollow");
+    for(let i=0;i<c.length;i++){
+     c[i].innerHTML="Follow"
+        c[i].style.background="#2750e6";
+    }
+    let res=await fetch ("https://locallens-1.onrender.com/unfollow",
+        {
+            method:"POST",
+            headers:{"Content-Type":"application/json"},
+             body:JSON.stringify({"followingMail":m,"followMail":umail})
+        }
+      
+    )
+      console.log(res);
 }
 }
 

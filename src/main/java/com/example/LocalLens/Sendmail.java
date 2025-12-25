@@ -18,14 +18,11 @@ public String sendmail(String to,String sub,String body)
         message.setTo(to);
         message.setSubject(sub);
         message.setText(body);
-       
-
         mail.send(message);
         return ("200");
     }
     catch(Exception error)
     {
-
         return ("404"+error);
     }    
 }
