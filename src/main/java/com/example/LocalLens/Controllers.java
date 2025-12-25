@@ -71,11 +71,16 @@ public class Controllers {
 
 	@PostMapping("/verify")
 	public boolean Verify(@RequestBody Otp o) {
+		try{
 		Otp m = otp.findTopByMailOrderBySentAtDesc(o.getMail());
 		if (m.getOtp() == o.getOtp())
 			return true;
 		else
 			return false;
+	}
+	catch(Exception e){
+		return false;
+	}
 	}
    @GetMapping("/profile/{mail}")
    public ResponseEntity<Signup> Profile(@PathVariable String mail)

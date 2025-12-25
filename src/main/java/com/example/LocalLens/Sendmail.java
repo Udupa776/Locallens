@@ -23,7 +23,8 @@ public String sendmail(String to,String sub,String body)
     }
     catch(Exception error)
     {
-        return ("404"+error);
+        String e=error.getMessage();
+        return ("404"+e);
     }    
 }
 }
