@@ -55,7 +55,7 @@ public class Controllers {
 	}
 
 	@PostMapping("/sendotp")
-	public ResponseEntity<Otp> sendotp(@RequestBody Otp o) {
+	public ResponseEntity<String> sendotp(@RequestBody Otp o) {
 		Random rand = new Random();
 		long n = rand.nextLong(1000, 9999);
 		o.setOtp(n);
@@ -65,8 +65,9 @@ public class Controllers {
 		String getmail = o.getMail();
 		String res = mail.sendmail(getmail, sub, body);
 		if (res == "200")
-			return ResponseEntity.ok(otp.save(o));
-		return ResponseEntity.notFound().build();
+		{otp.save(o);
+			return ResponseEntity.ok("saved");}
+		return ResponseEntity.ok(res);
 	}
 
 	@PostMapping("/verify")
