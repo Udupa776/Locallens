@@ -16,6 +16,12 @@ body {
     z-index: 100;
 }
 
+.logandrep{
+  display:flex;
+  flex-direction: row;
+  gap: 10px;
+}
+
 .header-content {
     display: flex;
     justify-content: space-between;

@@ -1,8 +1,19 @@
 
 let ne = document.createElement("div")
 let di = document.getElementById("di")
+
+function Logout()
+{
+    localStorage.setItem("loggedIn","")
+    window.location.href="landing.html"
+}
+
 window.addEventListener("load", async () => {
-    let uname = await cookieStore.get("mail")
+ let t=localStorage.getItem("time")
+   let dif=Date.now()-t
+   if(dif>0)
+    localStorage.setItem("loggedIn","")
+    let uname = localStorage.getItem("loggedIn")
     if (uname) {
         let res = await fetch("https://locallens-1.onrender.com/feed/All")
         let data = await res.json()
@@ -96,14 +107,18 @@ window.addEventListener("load", async () => {
         window.location.href = "landing.html"
     }
 })
-async function getcookie()
+function getcookie()
 {
-  let res=await cookieStore.get("mail")
-  return res.value;
+   let t=localStorage.getItem("time")
+   let dif=Date.now()-t
+   if(dif>0)
+    localStorage.setItem("loggedIn","")
+   let res =localStorage.getItem("loggedIn");
+  return res
 }
 async function showfollow()
 {
-    let c=document.getElementsByClassName(await getcookie())
+    let c=document.getElementsByClassName(getcookie())
     console.log(c)
     for(let i=0;i<c.length;i++)
         c[i].style.display="none"
@@ -111,8 +126,8 @@ async function showfollow()
 }
 async function getfollowers()
 {
-    let umail=await cookieStore.get("mail")
-    let followmail=umail.value
+    
+    let followmail=getcookie()
     let res=await fetch(`https://locallens-1.onrender.com/getfollowers/${followmail}`)
     let data=await res.json()
     
@@ -137,11 +152,12 @@ async function DeleteComment(comment) {
 }
 
 async function follow(m)
-{  let cook=await cookieStore.get("mail")
+{  
     
-    let umail=await cook.value;
+    let umail=getcookie();
     console.log(m)
     console.log(umail)
+    if(umail){
     if(umail!=m){
     let c=document.getElementsByClassName(m)
     for(let i=0;i<c.length;i++){
@@ -157,14 +173,14 @@ async function follow(m)
     })
     let data1=await res1.json();
     console.log(data1)
-    
+}
 }
 
 async function Postcommet(id) {
     console.log(id)
-    let uname = await cookieStore.get("mail")
+    let uname = getcookie()
     let commentsec = document.getElementById(`commentsec-${id}`);
-    let nme = "@" + uname.value.split("@")[0]
+    let nme = "@" + uname.split("@")[0]
     if (commentsec.value) {
         let res = await fetch("https://locallens-1.onrender.com/storecomment", {
             method: "POST",
@@ -286,6 +302,7 @@ async function render(cat) {
 async function profileClick(mail)
 {
     console.log(mail)
-    cookieStore.set({name:"profile",value:mail,expires:Date.now()+30*60*1000,path:"/"})
+    localStorage.setItem("fetchprofile",mail)
     window.location.href="profile.html"
 }
+  

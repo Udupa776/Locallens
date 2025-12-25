@@ -146,7 +146,9 @@ async function Otpverification(e) {
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ "mail": mail.value, "name": fullname.value, "phone": phno.value, "pass": pass.value })
             })
-            cookieStore.set({name:"mail",value:fullname.value,expires:Date.now()+30*60*1000,path:"/"})
+            cookieStore.set({name:"mail",value:mail.value,expires:Date.now()+30*60*1000,path:"/"})
+            localStorage.setItem("loggedIn",mail.value)
+             localStorage.setItem("time",Date.now()+30 * 60 * 1000);
             window.location.href = "test.html"
         }
         catch (error) {

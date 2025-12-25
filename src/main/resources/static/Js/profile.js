@@ -1,8 +1,4 @@
-async function getcookie()
-{
-    let res=await cookieStore.get("profile")
-    return res?res.value:""
-}
+
 let uavatar=document.getElementById("uavatar")
 let uname=document.getElementById("uname")
 let mail=document.getElementById("mail")
@@ -10,7 +6,11 @@ let numposts=document.getElementById("numposts")
 let fname=document.getElementById("fname")
 let phno=document.getElementById("phno")
 window.addEventListener("load",async ()=>{
-   let umail=await getcookie();
+     let t=localStorage.getItem("time")
+   let dif=Date.now()-t
+   if(dif>0)
+    localStorage.setItem("loggedIn","")
+   let umail=localStorage.getItem("fetchprofile")
    console.log(umail)
    if(umail){
    let res1=await fetch(`https://locallens-1.onrender.com/getcount/${umail}`)

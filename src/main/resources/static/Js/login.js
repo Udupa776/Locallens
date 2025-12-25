@@ -25,6 +25,8 @@ async function Login(e)
     
     if(data===true ){
         cookieStore.set({name:"mail",value:mail.value,expires:Date.now()+30*60*1000,path:"/"})
+         localStorage.setItem("loggedIn",mail.value)
+         localStorage.setItem("time",Date.now()+30 * 60 * 1000);
         window.location.href="test.html";
 
     }
