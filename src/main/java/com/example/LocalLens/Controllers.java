@@ -66,7 +66,7 @@ public class Controllers {
 		String res = mail.sendmail(getmail, sub, body);
 		if (res == "200")
 		{otp.save(o);
-			return ( Map.of("saved","saved true "));}
+			return ( Map.of("saved","saved true "+n));}
 		return (Map.of("error is ",res));
 	}
 
