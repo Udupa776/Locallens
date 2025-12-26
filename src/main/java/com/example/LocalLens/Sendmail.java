@@ -1,30 +1,40 @@
 package com.example.LocalLens;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.mail.SimpleMailMessage;
-import org.springframework.mail.javamail.JavaMailSender;
+
+import com.sendgrid.helpers.mail.Mail;
+import com.sendgrid.helpers.mail.objects.Email;
+import com.sendgrid.helpers.mail.objects.Content;
+
+import com.sendgrid.SendGrid;
+import com.sendgrid.Request;
+import com.sendgrid.Method;
 import org.springframework.stereotype.Service;
-import java.util.*;
+import java.io.IOException;
 
 @Service
 public class Sendmail {
-    @Autowired
-    private JavaMailSender mail;
 
-public String sendmail(String to,String sub,String body)
-{
-    try{
-        SimpleMailMessage message =new SimpleMailMessage();
-        message.setFrom("smartplant777@gmail.com");
-        message.setTo(to);
-        message.setSubject(sub);
-        message.setText(body);
-        mail.send(message);
-        return ("200");
+    private static final String API_KEY = "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";
+
+    public String sendmail(String to, String subject, String body) {
+
+        Email from = new Email("smartplant777@gmail.com"); // must be verified in SendGrid
+        Email toEmail = new Email(to);
+        Content content = new Content("text/plain", body);
+        Mail mail = new Mail(from, subject, toEmail, content);
+
+        SendGrid sg = new SendGrid(API_KEY);
+        Request request = new Request();
+
+        try {
+            request.setMethod(Method.POST);
+            request.setEndpoint("mail/send");
+            request.setBody(mail.build());
+            sg.api(request);
+            return "200";
+        } catch (IOException e) {
+            return "404 " + e.getMessage();
+        }
     }
-    catch(Exception error)
-    {
-        String e=error.getMessage();
-        return ("404"+e);
-    }    
 }
-}
+
+    

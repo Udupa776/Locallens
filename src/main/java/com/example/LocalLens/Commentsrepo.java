@@ -13,5 +13,5 @@ public interface Commentsrepo extends JpaRepository<Comments,Long>{
 @Query("DELETE FROM Comments c WHERE c.comment = :comment")
 void deleteByComment(@Param("comment") String comment);
 
-long countByMail(String mail);
+
 }

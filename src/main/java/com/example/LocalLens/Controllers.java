@@ -55,7 +55,7 @@ public class Controllers {
 	}
 
 	@PostMapping("/sendotp")
-	public List<Map<String,String>> sendotp(@RequestBody Otp o) {
+	public Map<String,String> sendotp(@RequestBody Otp o) {
 		Random rand = new Random();
 		long n = rand.nextLong(1000, 9999);
 		o.setOtp(n);
@@ -66,8 +66,8 @@ public class Controllers {
 		String res = mail.sendmail(getmail, sub, body);
 		if (res == "200")
 		{otp.save(o);
-			return List.of( Map.of("saved","saved true "));}
-		return List.of(Map.of("error in ",res));
+			return ( Map.of("saved","saved true "));}
+		return (Map.of("error is ",res));
 	}
 
 	@PostMapping("/verify")
