@@ -64,20 +64,21 @@ public class Controllers {
 		String body = "Your Signup OTP is " + n + " \n This mail is valid for 5 minutes only \n \t\t\t Thank You";
 		String getmail = o.getMail();
 		String res = mail.sendmail(getmail, sub, body);
-		if (res == "200")
+		if (res.equals("200"))
 		{otp.save(o);
 			return ( Map.of("saved","saved true "+n));}
 		return (Map.of("error is ",res));
 	}
 
 	@PostMapping("/verify")
-	public boolean Verify(@RequestBody Otp o) {
+	public Map<String,Boolean> Verify(@RequestBody Otp o) {
 	
-		Otp m = otp.findTopByMailOrderBySentAtDesc(o.getMail());
+		Optional<Otp> g = otp.findTopByMailOrderBySentAtDesc(o.getMail());
+		Otp m=g.get();
 		if (m.getOtp() == o.getOtp())
-			return true;
+			return Map.of("Isverified",true);
 		else
-			return false;
+			return Map.of("Isverified",false);
 	
 	}
    @GetMapping("/profile/{mail}")
