@@ -139,7 +139,7 @@ async function Otpverification(e) {
         body: JSON.stringify({ "mail": mail.value, "otp": otp.value })
     })
     let data = await res.json();
-    if (data == true) {
+    if (data === true) {
         try {
             let res = await fetch("https://locallens-1.onrender.com/signup", {
                 method: "POST",
