@@ -23,12 +23,11 @@ async function Login(e)
     let data=await res.json()
     console.log(data)
     
-    if(data===true ){
+    if(data["Isverified"]==true ){
         cookieStore.set({name:"mail",value:mail.value,expires:Date.now()+30*60*1000,path:"/"})
          localStorage.setItem("loggedIn",mail.value)
          localStorage.setItem("time",Date.now()+30 * 60 * 1000);
         window.location.href="test.html";
-
     }
     else
         invalidotp.style.display=""
