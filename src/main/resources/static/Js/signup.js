@@ -22,7 +22,7 @@ let isExisting=false
 mail.addEventListener("change",async ()=>
 {
    console.log(mail.value)
-   let res=await fetch ("http://localhost:8080/getmail",{
+   let res=await fetch ("https://locallens-1.onrender.com/getmail",{
     method:"POST",
     headers:{"Content-Type":"application/json"},
     body:JSON.stringify({"mail":mail.value})
