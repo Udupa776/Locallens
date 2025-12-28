@@ -9,15 +9,17 @@ import com.sendgrid.Request;
 import com.sendgrid.Method;
 import org.springframework.stereotype.Service;
 import java.io.IOException;
+import org.springframework.beans.factory.annotation.Value;
 
 @Service
 public class Sendmail {
-
-    private static final String API_KEY = "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";
+    
+    @Value("${sendgrid.key}")
+    private String API_KEY;
 
     public String sendmail(String to, String subject, String body) {
-
-        Email from = new Email("smartplant777@gmail.com"); // must be verified in SendGrid
+    System.out.println(API_KEY);
+        Email from = new Email("smartplant777@gmail.com"); 
         Email toEmail = new Email(to);
         Content content = new Content("text/plain", body);
         Mail mail = new Mail(from, subject, toEmail, content);

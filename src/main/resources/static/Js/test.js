@@ -323,4 +323,4 @@ async function profileClick(mail)
     localStorage.setItem("fetchprofile",mail)
     window.location.href="profile.html"
 }
-  
+   

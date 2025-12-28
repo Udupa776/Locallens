@@ -6,8 +6,7 @@ let pass=document.getElementById("pass")
 let conpass=document.getElementById("conpass")
 let wrongpass=document.getElementById("wrongpass")
 
-// production request fetch 
-//https://locallens-1.onrender.com
+
 
 async function forgotpass(e)
 {
