@@ -15,6 +15,41 @@ let submitfrm = document.getElementById("submitfrm")
 let otppara = document.getElementById("otppara")
 let invalidotp = document.getElementById("invalidotp")
 let otp = document.getElementById("otp")
+let samemail=document.getElementById("samemail")
+
+
+let isExisting=false
+mail.addEventListener("change",async ()=>
+{
+   console.log(mail.value)
+   let res=await fetch ("http://localhost:8080/getmail",{
+    method:"POST",
+    headers:{"Content-Type":"application/json"},
+    body:JSON.stringify({"mail":mail.value})
+   })
+   console.log(res)
+   let data=await res.json()
+   console.log(data)
+  console.log(typeof(isExisting))
+  console.log(isExisting)
+   if(data>=1)
+   {
+    console.log("you already signed up please login")
+    isExisting=true
+    subbtn.disabled=true
+    samemail.style.display=""
+    console.log(isExisting)
+   }
+   
+   else
+   {
+    samemail.style.display="none"
+    isExisting=false
+    subbtn.disabled = false;
+    subbtn.style.background = "#0b5ed7"
+   }
+   
+})
 
 function capitalCheck(str) {
     return /^[A-Z]+$/.test(str);
@@ -66,9 +101,9 @@ pass.addEventListener("input", () => {
             l = 0
             len.innerHTML = "◯"
         }
-        if (l == 1 && spl == 1 && s == 1 && n == 1 && cap == 1 && pass.value == conpass.value) {
+        if (l == 1 && spl == 1 && s == 1 && n == 1 && cap == 1 && pass.value == conpass.value && isExisting===false) {
             {
-
+                console.log(isExisting)
                 subbtn.disabled = false;
                 subbtn.style.background = "#0b5ed7"
 
@@ -76,6 +111,7 @@ pass.addEventListener("input", () => {
 
         }
         else {
+            console.log(isExisting)
             subbtn.disabled = true;
             subbtn.style.background = "#ddebe9ff"
             subbtn.style.color = "#999999ff"
@@ -85,16 +121,25 @@ pass.addEventListener("input", () => {
 })
 conpass.addEventListener("input", () => {
     if (pass.value != conpass.value) {
+        console.log(conpass.value)
         subbtn.disabled = true;
         subbtn.style.background = "#ddebe9ff"
         subbtn.style.color = "#999999ff"
         para.style.display = "";
     }
-    else {
+    else
+        {
+            console.log(conpass.value)
         para.style.display = "none";
         subbtn.disabled = false;
         subbtn.style.background = "#0b5ed7"
     }
+    if(isExisting===true)
+        {
+        subbtn.disabled = true;
+        subbtn.style.background = "#ddebe9ff"
+        subbtn.style.color = "#999999ff"
+        }
 })
 
 phno.addEventListener("input", () => {
@@ -126,7 +171,7 @@ async function signup(e) {
     }
     catch (error) {
         console.log("error", error);
-        alert(error);
+        alert("Oops!! mail not sent please try again");
     }
 }
 

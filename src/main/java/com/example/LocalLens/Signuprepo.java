@@ -13,4 +13,6 @@ public interface Signuprepo extends JpaRepository<Signup,Long> {
     @Transactional
     @Query("UPDATE Signup s SET s.pass= :password WHERE mail= :email")
     int upadatePass(@Param("password") String password,@Param("email") String email);
+
+    long countByMail(String mail);
 }

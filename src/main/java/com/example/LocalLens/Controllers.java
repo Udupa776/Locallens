@@ -89,18 +89,11 @@ public class Controllers {
 
 
 	@PostMapping("/checkpass")
-	public boolean CheckPass(@RequestBody Signup si)
+	public Signup CheckPass(@RequestBody Signup si)
 	{
-	    try{
 		Signup s=signup.findByMail(si.getMail());
-		if(s.getPass().equals(si.getPass()))
-		return true;
-	    else 
-			return false;
-		}
-		catch(Exception e){
-			return false;
-		}
+		return s;
+		
 	}
 	@PostMapping("/updatepass")
 	public int UpdatePass(@RequestBody Signup s)
@@ -175,5 +168,12 @@ public class Controllers {
 		
 		follow.Unfollow(param1,param2);
 		return ResponseEntity.ok().build();
+	}
+
+	@PostMapping("/getmail")
+	public long countmail(@RequestBody Post m)
+	{
+		long c=signup.countByMail(m.getMail());
+		return c;
 	}
 }
