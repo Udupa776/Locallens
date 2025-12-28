@@ -89,11 +89,23 @@ public class Controllers {
 
 
 	@PostMapping("/checkpass")
-	public Signup CheckPass(@RequestBody Signup si)
+	public ResponseEntity<String> CheckPass(@RequestBody Signup si)
 	{
+	    try{
 		Signup s=signup.findByMail(si.getMail());
-		return s;
-		
+		if(s!=null){
+		if(s.getPass().equals(si.getPass()))
+		return ResponseEntity.ok("true");
+	    else 
+			return ResponseEntity.ok("false");
+		}
+		else{
+			return ResponseEntity.ok("You haven't signed up yet");
+		}
+	}
+		catch(Exception e){
+			return ResponseEntity.ok("false");
+		}
 	}
 	@PostMapping("/updatepass")
 	public int UpdatePass(@RequestBody Signup s)

@@ -14,12 +14,13 @@ async function Login(e)
 {
     e.preventDefault()
     console.log("clicked")
-    let res=await fetch("https://locallens-1.onrender.com/checkpass",{
+    try{
+    let res=await fetch("http://localhost:8080/checkpass",{
         method:"POST",
         headers:{"Content-Type":"application/json"},
         body:JSON.stringify({"mail":mail.value,"pass":pass.value})
     })
-    console.log(pass.value)
+   console.log(res)
     let data=await res.json()
     console.log(data)
     
@@ -31,4 +32,9 @@ async function Login(e)
     }
     else
         invalidotp.style.display=""
+}
+catch (e)
+{
+    console.log("error",e);
+}
 }
