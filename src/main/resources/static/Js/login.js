@@ -15,7 +15,7 @@ async function Login(e)
     e.preventDefault()
     console.log("clicked")
     try{
-    let res=await fetch("https://locallens-1.onrender.com//checkpass",{
+    let res=await fetch("https://locallens-1.onrender.com/checkpass",{
         method:"POST",
         headers:{"Content-Type":"application/json"},
         body:JSON.stringify({"mail":mail.value,"pass":pass.value})
