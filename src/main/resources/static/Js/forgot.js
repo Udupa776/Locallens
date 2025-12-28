@@ -49,12 +49,11 @@ async function Otpverification(e)
         })
         let data=await res.json()
         console.log(data)
-        if(data===1)
+        if(data>=1)
             window.location.href="login.html"
         else{
             invalidotp.style.display = ""
              invalidotp.innerHTML=`Sorry!! You hven't Signup yet please SignUp first `
-             
             }
 
         
