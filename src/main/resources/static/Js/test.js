@@ -313,7 +313,8 @@ async function render(cat) {
  <br>
 `}
     })
-
+showfollow();
+        getfollowers();
 }
 
 async function profileClick(mail)
